@@ -108,3 +108,7 @@ module "linux_virtual_machine" {
   public_ip_enabled = true
 
 }
+
+output "vm_admin_login" {
+  value = module.windows_virtual_machine.admin_username
+}
