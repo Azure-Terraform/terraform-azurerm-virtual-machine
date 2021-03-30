@@ -42,27 +42,27 @@ variable "kernel_type" {
 # Custom Machine Image
 variable "custom_image_id" {
   description = "Custom machine image ID"
-  type = string
-  default = null
+  type        = string
+  default     = null
 }
 
 # Operating System
 variable "source_image_publisher" {
   description = "Operating System Publisher"
   type        = string
-  default = null
+  default     = null
 }
 
 variable "source_image_offer" {
   description = "Operating System Name"
   type        = string
-  default = null
+  default     = null
 }
 
 variable "source_image_sku" {
   description = "Operating System SKU"
   type        = string
-  default = null
+  default     = null
 }
 
 variable "source_image_version" {
