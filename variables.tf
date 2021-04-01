@@ -26,6 +26,13 @@ variable "windows_machine_name" {
   default     = ""
 }
 
+# Linux
+variable "linux_machine_name" {
+  description = "Linux Virtual Machine Name - If left blank generated from metadata module"
+  type        = string
+  default     = ""
+}
+
 # VM Size
 variable "virtual_machine_size" {
   description = "Instance size to be provisioned"

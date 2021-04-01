@@ -94,6 +94,9 @@ module "linux_virtual_machine" {
   # Windows or Linux?
   kernel_type = "linux"
 
+  # Instance Name
+  linux_machine_name = "testing101"
+
   # Instance Size
   virtual_machine_size = "Standard_D2as_v4"
 

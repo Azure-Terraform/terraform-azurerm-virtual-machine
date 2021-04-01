@@ -1,9 +1,12 @@
-# Name
-output "virtual_machine_name" {
-  value = local.name
+# Virtal Machine Details
+output "virtual_machine_id" {
+  value = local.virtual_machine_id
 }
 
-# Private IP
+output "virtual_machine_name" {
+  value = local.virtual_machine_name
+}
+
 output "virtual_machine_private_ip" {
   value = azurerm_network_interface.dynamic.private_ip_address
 }

@@ -108,3 +108,12 @@ module "windows_virtual_machine" {
   public_ip_enabled = true
 
 }
+
+# Outputs
+output "id" {
+  value = module.windows_virtual_machine.virtual_machine_id
+}
+
+output "name" {
+  value = module.windows_virtual_machine.virtual_machine_name
+}
