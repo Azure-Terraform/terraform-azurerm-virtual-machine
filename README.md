@@ -27,6 +27,7 @@ Using a unique count (machine_count) to prevent duplicates
 |------|-------------|------|---------|:--------:|
 | admin\_password | Default Password - Random if left blank | `string` | `""` | no |
 | admin\_username | Default Username - Random if left blank | `string` | `""` | no |
+| custom\_image\_id | Custom machine image ID | `string` | `null` | no |
 | kernel\_type | Virtual machine kernel - windows or linux | `string` | `"linux"` | no |
 | location | Azure region | `string` | n/a | yes |
 | machine\_count | Unique Identifier/Count - Random if left at 0 | `number` | `0` | no |
@@ -37,9 +38,9 @@ Using a unique count (machine_count) to prevent duplicates
 | public\_ip\_enabled | Create and attach a public interface? | `bool` | `false` | no |
 | public\_ip\_sku | SKU to be used with this public IP - Basic or Standard | `string` | `"Standard"` | no |
 | resource\_group\_name | Resource group name | `string` | n/a | yes |
-| source\_image\_offer | Operating System Name | `string` | n/a | yes |
-| source\_image\_publisher | Operating System Publisher | `string` | n/a | yes |
-| source\_image\_sku | Operating System SKU | `string` | n/a | yes |
+| source\_image\_offer | Operating System Name | `string` | `null` | no |
+| source\_image\_publisher | Operating System Publisher | `string` | `null` | no |
+| source\_image\_sku | Operating System SKU | `string` | `null` | no |
 | source\_image\_version | Operating System Version | `string` | `"latest"` | no |
 | subnet\_id | Virtual network subnet ID | `string` | n/a | yes |
 | tags | tags to be applied to resources | `map(string)` | n/a | yes |

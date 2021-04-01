@@ -76,11 +76,17 @@ resource "azurerm_linux_virtual_machine" "linux" {
   disable_password_authentication = false
   network_interface_ids           = [azurerm_network_interface.dynamic.id]
 
-  source_image_reference {
-    publisher = var.source_image_publisher
-    offer     = var.source_image_offer
-    sku       = var.source_image_sku
-    version   = var.source_image_version
+  source_image_id = var.custom_image_id
+
+  dynamic "source_image_reference" {
+    for_each = var.custom_image_id == null ? ["no_custom_image_provided"] : []
+
+    content {
+      publisher = var.source_image_publisher
+      offer     = var.source_image_offer
+      sku       = var.source_image_sku
+      version   = var.source_image_version
+    }
   }
 
   os_disk {
@@ -107,11 +113,18 @@ resource "azurerm_windows_virtual_machine" "windows" {
 
   network_interface_ids = [azurerm_network_interface.dynamic.id]
 
-  source_image_reference {
-    publisher = var.source_image_publisher
-    offer     = var.source_image_offer
-    sku       = var.source_image_sku
-    version   = var.source_image_version
+  source_image_id = var.custom_image_id
+
+
+  dynamic "source_image_reference" {
+    for_each = var.custom_image_id == null ? ["no_custom_image_provided"] : []
+
+    content {
+      publisher = var.source_image_publisher
+      offer     = var.source_image_offer
+      sku       = var.source_image_sku
+      version   = var.source_image_version
+    }
   }
 
   os_disk {
