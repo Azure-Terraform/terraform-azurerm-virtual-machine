@@ -117,3 +117,7 @@ output "id" {
 output "name" {
   value = module.windows_virtual_machine.virtual_machine_name
 }
+
+output "vm_admin_login" {
+  value = module.windows_virtual_machine.admin_username
+}
