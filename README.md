@@ -28,6 +28,7 @@ Using a unique count (machine_count) to prevent duplicates
 | admin\_password | Default Password - Random if left blank | `string` | `""` | no |
 | admin\_username | Default Username - Random if left blank | `string` | `""` | no |
 | kernel\_type | Virtual machine kernel - windows or linux | `string` | `"linux"` | no |
+| linux\_machine\_name | Linux Virtual Machine Name - If left blank generated from metadata module | `string` | `""` | no |
 | location | Azure region | `string` | n/a | yes |
 | machine\_count | Unique Identifier/Count - Random if left at 0 | `number` | `0` | no |
 | names | names to be applied to resources | `map(string)` | n/a | yes |
@@ -52,7 +53,8 @@ Using a unique count (machine_count) to prevent duplicates
 |------|-------------|
 | admin\_password | n/a |
 | admin\_username | Credentials |
-| virtual\_machine\_name | Name |
-| virtual\_machine\_private\_ip | Private IP |
+| virtual\_machine\_id | Virtal Machine Details |
+| virtual\_machine\_name | n/a |
+| virtual\_machine\_private\_ip | n/a |
 
 <!--- END_TF_DOCS --->
