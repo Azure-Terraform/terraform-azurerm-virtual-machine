@@ -56,8 +56,8 @@ variable "custom_image_id" {
 # Custom User Data
 variable "custom_data" {
   description = "The Base64-Encoded Custom Data which should be used for this Virtual Machine"
-  type = string
-  default = null
+  type        = string
+  default     = null
 }
 
 # Operating System
