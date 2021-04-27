@@ -53,6 +53,13 @@ variable "custom_image_id" {
   default     = null
 }
 
+# Custom User Data
+variable "custom_data" {
+  description = "The Base64-Encoded Custom Data which should be used for this Virtual Machine"
+  type = string
+  default = null
+}
+
 # Operating System
 variable "source_image_publisher" {
   description = "Operating System Publisher"

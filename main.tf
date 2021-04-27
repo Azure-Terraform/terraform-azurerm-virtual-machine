@@ -82,6 +82,7 @@ resource "azurerm_linux_virtual_machine" "linux" {
   network_interface_ids           = [azurerm_network_interface.dynamic.id]
 
   source_image_id = var.custom_image_id
+  custom_data     = var.custom_data
 
   dynamic "source_image_reference" {
     for_each = var.custom_image_id == null ? ["no_custom_image_provided"] : []
@@ -119,7 +120,7 @@ resource "azurerm_windows_virtual_machine" "windows" {
   network_interface_ids = [azurerm_network_interface.dynamic.id]
 
   source_image_id = var.custom_image_id
-
+  custom_data     = var.custom_data
 
   dynamic "source_image_reference" {
     for_each = var.custom_image_id == null ? ["no_custom_image_provided"] : []
