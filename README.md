@@ -27,6 +27,7 @@ Using a unique count (machine_count) to prevent duplicates
 |------|-------------|------|---------|:--------:|
 | admin\_password | Default Password - Random if left blank | `string` | `""` | no |
 | admin\_username | Default Username - Random if left blank | `string` | `""` | no |
+| custom\_data | The Base64-Encoded Custom Data which should be used for this Virtual Machine | `string` | `null` | no |
 | custom\_image\_id | Custom machine image ID | `string` | `null` | no |
 | kernel\_type | Virtual machine kernel - windows or linux | `string` | `"linux"` | no |
 | linux\_machine\_name | Linux Virtual Machine Name - If left blank generated from metadata module | `string` | `""` | no |
