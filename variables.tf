@@ -160,7 +160,7 @@ variable "public_ip_sku" {
 
 # VM Identity
 variable "identity_type" {
-  description = "The Managed Service Identity Type of this Virtual Machine. Possible values are SystemAssigned (where Azure will generate a Service Principal for you), UserAssigned (where you can specify the Service Principal ID's)."
+  description = "The Managed Service Identity Type of this Virtual Machine. Possible values are SystemAssigned (where Azure will generate a Managed Identity for you), UserAssigned (where you can specify the Managed Identities ID)."
   type        = string
   default     = "SystemAssigned"
 
