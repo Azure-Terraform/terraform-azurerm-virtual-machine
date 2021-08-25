@@ -83,6 +83,13 @@ module "virtual_network" {
   }
 }
 
+resource "azurerm_user_assigned_identity" "uai" {
+  resource_group_name = module.resource_group.name
+  location            = module.resource_group.location
+
+  name = "example-uai"
+}
+
 module "linux_virtual_machine" {
   source = "../../"
 
@@ -94,14 +101,8 @@ module "linux_virtual_machine" {
   # Windows or Linux?
   kernel_type = "linux"
 
-  # Instance Name
-  linux_machine_name = "testing101"
-
   # Instance Size
   virtual_machine_size = "Standard_D2as_v4"
-
-  # Custom Data
-  custom_data = base64encode(file("${path.module}/example-file.sh"))
 
   # Operating System Image
   source_image_publisher = "Canonical"
@@ -111,7 +112,10 @@ module "linux_virtual_machine" {
 
   # Virtual Network
   subnet_id         = module.virtual_network.subnets["iaas-public"].id
-  public_ip_enabled = true
+
+  # Identity
+  identity_type = "UserAssigned"
+  identity_ids = [azurerm_user_assigned_identity.uai.id]
 
 }
 
@@ -122,4 +126,12 @@ output "id" {
 
 output "name" {
   value = module.linux_virtual_machine.virtual_machine_name
+}
+
+output "vm_admin_login" {
+  value = module.linux_virtual_machine.admin_username
+}
+
+output "identity_principal_id" {
+  value = module.linux_virtual_machine.identity_principal_id
 }
