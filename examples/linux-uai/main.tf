@@ -83,7 +83,14 @@ module "virtual_network" {
   }
 }
 
-module "windows_virtual_machine" {
+resource "azurerm_user_assigned_identity" "uai" {
+  resource_group_name = module.resource_group.name
+  location            = module.resource_group.location
+
+  name = "example-uai"
+}
+
+module "linux_virtual_machine" {
   source = "../../"
 
   resource_group_name = module.resource_group.name
@@ -92,32 +99,39 @@ module "windows_virtual_machine" {
   tags                = module.metadata.tags
 
   # Windows or Linux?
-  kernel_type = "windows"
+  kernel_type = "linux"
 
   # Instance Size
   virtual_machine_size = "Standard_D2as_v4"
 
   # Operating System Image
-  source_image_publisher = "MicrosoftWindowsServer"
-  source_image_offer     = "WindowsServer"
-  source_image_sku       = "2016-Datacenter"
+  source_image_publisher = "Canonical"
+  source_image_offer     = "UbuntuServer"
+  source_image_sku       = "18.04-LTS"
   source_image_version   = "latest"
 
   # Virtual Network
   subnet_id         = module.virtual_network.subnets["iaas-public"].id
-  public_ip_enabled = true
+
+  # Identity
+  identity_type = "UserAssigned"
+  identity_ids = [azurerm_user_assigned_identity.uai.id]
 
 }
 
 # Outputs
 output "id" {
-  value = module.windows_virtual_machine.virtual_machine_id
+  value = module.linux_virtual_machine.virtual_machine_id
 }
 
 output "name" {
-  value = module.windows_virtual_machine.virtual_machine_name
+  value = module.linux_virtual_machine.virtual_machine_name
 }
 
 output "vm_admin_login" {
-  value = module.windows_virtual_machine.admin_username
+  value = module.linux_virtual_machine.admin_username
+}
+
+output "identity_principal_id" {
+  value = module.linux_virtual_machine.identity_principal_id
 }

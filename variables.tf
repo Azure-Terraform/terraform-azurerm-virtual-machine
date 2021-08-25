@@ -90,12 +90,22 @@ variable "operating_system_disk_cache" {
   description = "Type of caching to use on the OS disk - Options: None, ReadOnly or ReadWrite"
   type        = string
   default     = "ReadWrite"
+
+  validation {
+    condition     = (contains(["none", "readonly", "readwrite"], lower(var.operating_system_disk_cache)))
+    error_message = "OS Disk cache can only be \"None\", \"ReadOnly\" or \"ReadWrite\"."
+  }
 }
 
 variable "operating_system_disk_type" {
   description = "Type of storage account to use with the OS disk - Options: Standard_LRS, StandardSSD_LRS or Premium_LRS"
   type        = string
   default     = "StandardSSD_LRS"
+
+  validation {
+    condition     = (contains(["standard_lrs", "standardssd_lrs", "premium_lrs", "ultrassd_lrs"], lower(var.operating_system_disk_type)))
+    error_message = "Public IP sku can only be \"Standard_LRS\", \"StandardSSD_LRS\", \"Premium_LRS\" or \"UltraSSD_LRS\"."
+  }
 }
 
 variable "operating_system_disk_write_accelerator" {
@@ -141,4 +151,27 @@ variable "public_ip_sku" {
   description = "SKU to be used with this public IP - Basic or Standard"
   type        = string
   default     = "Standard"
+
+  validation {
+    condition     = (contains(["basic", "standard"], lower(var.public_ip_sku)))
+    error_message = "Public IP sku can only be \"Basic\" or \"Standard\"."
+  }
+}
+
+# VM Identity
+variable "identity_type" {
+  description = "The Managed Service Identity Type of this Virtual Machine. Possible values are SystemAssigned (where Azure will generate a Managed Identity for you), UserAssigned (where you can specify the Managed Identities ID)."
+  type        = string
+  default     = "SystemAssigned"
+
+  validation {
+    condition     = (contains(["systemassigned", "userassigned"], lower(var.identity_type)))
+    error_message = "The identity type can only be \"UserAssigned\" or \"SystemAssigned\"."
+  }
+}
+
+variable "identity_ids" {
+  description = "Specifies a list of user managed identity ids to be assigned to the VM"
+  type        = list(string)
+  default     = []
 }

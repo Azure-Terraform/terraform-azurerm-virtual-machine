@@ -20,3 +20,8 @@ output "admin_password" {
   value     = local.admin_password
   sensitive = true
 }
+
+# Identity
+output "identity_principal_id" {
+  value = local.principal_id
+}

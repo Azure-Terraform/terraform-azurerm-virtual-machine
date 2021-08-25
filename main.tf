@@ -24,22 +24,6 @@ resource "random_integer" "count" {
   max = 99
 }
 
-# Variables
-locals {
-  count = (var.machine_count != 0 ? var.machine_count : random_integer.count.result)
-
-  default_linux_name   = "vm-${var.names.resource_group_type}-${var.names.product_name}-${var.names.environment}-${var.names.location}-${local.count}"
-  linux_machine_name   = (var.linux_machine_name != "" ? var.linux_machine_name : local.default_linux_name)
-  windows_machine_name = (var.windows_machine_name != "" ? var.windows_machine_name : random_string.windows_name.result)
-
-  admin_username = (var.admin_username != "" ? var.admin_username : random_string.username.result)
-  admin_password = (var.admin_password != "" ? var.admin_password : random_password.password.result)
-
-  virtual_machine_name = (var.kernel_type == "linux" ? local.linux_machine_name : local.windows_machine_name)
-  virtual_machine_id   = (var.kernel_type == "linux" ? azurerm_linux_virtual_machine.linux.0.id : azurerm_windows_virtual_machine.windows.0.id)
-}
-
-
 # Network Interfaces
 resource "azurerm_public_ip" "primary" {
   count = (var.public_ip_enabled == true ? 1 : 0)
@@ -101,8 +85,12 @@ resource "azurerm_linux_virtual_machine" "linux" {
     storage_account_type      = var.operating_system_disk_type
     write_accelerator_enabled = var.operating_system_disk_write_accelerator
   }
-}
 
+  identity {
+    type         = var.identity_type
+    identity_ids = var.identity_ids
+  }
+}
 
 # Windows
 resource "azurerm_windows_virtual_machine" "windows" {
@@ -140,4 +128,8 @@ resource "azurerm_windows_virtual_machine" "windows" {
     write_accelerator_enabled = var.operating_system_disk_write_accelerator
   }
 
+  identity {
+    type         = var.identity_type
+    identity_ids = var.identity_ids
+  }
 }

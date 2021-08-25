@@ -2,14 +2,14 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~>2.48.0"
+      version = "~>2.70.0"
     }
     random = {
       source  = "hashicorp/random"
       version = "~>3.1.0"
     }
   }
-  required_version = ">=0.14.7"
+  required_version = ">=0.15.0"
 }
 
 provider "azurerm" {
@@ -40,7 +40,7 @@ module "metadata" {
   naming_rules = module.naming.yaml
 
   market              = "us"
-  project             = "https://github.com/Azure-Terraform/terraform-azurerm-virtual-network/tree/master/example/bastion"
+  project             = "https://github.com/Azure-Terraform/terraform-azurerm-virtual-machine/tree/main/examples"
   location            = "eastus2"
   environment         = "sandbox"
   product_name        = random_string.random.result
@@ -105,7 +105,7 @@ module "linux_virtual_machine" {
 
   # Virtual Network
   subnet_id         = module.virtual_network.subnets["iaas-public"].id
-  public_ip_enabled = true
+  public_ip_enabled = false
 
 }
 
@@ -119,5 +119,5 @@ output "name" {
 }
 
 output "vm_admin_login" {
-  value = module.windows_virtual_machine.admin_username
+  value = module.linux_virtual_machine.admin_username
 }

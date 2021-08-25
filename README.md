@@ -10,15 +10,15 @@ Using a unique count (machine_count) to prevent duplicates
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.13.5 |
-| azurerm | >= 2.48.0 |
+| terraform | >= 0.15 |
+| azurerm | >= 2.70.0 |
 | random | >= 3.1.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| azurerm | >= 2.48.0 |
+| azurerm | >= 2.70.0 |
 | random | >= 3.1.0 |
 
 ## Inputs
@@ -29,6 +29,8 @@ Using a unique count (machine_count) to prevent duplicates
 | admin\_username | Default Username - Random if left blank | `string` | `""` | no |
 | custom\_data | The Base64-Encoded Custom Data which should be used for this Virtual Machine | `string` | `null` | no |
 | custom\_image\_id | Custom machine image ID | `string` | `null` | no |
+| identity\_ids | Specifies a list of user managed identity ids to be assigned to the VM | `list(string)` | `[]` | no |
+| identity\_type | The Managed Service Identity Type of this Virtual Machine. Possible values are SystemAssigned (where Azure will generate a Managed Identity for you), UserAssigned (where you can specify the Managed Identities ID). | `string` | `"SystemAssigned"` | no |
 | kernel\_type | Virtual machine kernel - windows or linux | `string` | `"linux"` | no |
 | linux\_machine\_name | Linux Virtual Machine Name - If left blank generated from metadata module | `string` | `""` | no |
 | location | Azure region | `string` | n/a | yes |
@@ -55,6 +57,7 @@ Using a unique count (machine_count) to prevent duplicates
 |------|-------------|
 | admin\_password | n/a |
 | admin\_username | Credentials |
+| identity\_principal\_id | Identity |
 | virtual\_machine\_id | Virtal Machine Details |
 | virtual\_machine\_name | n/a |
 | virtual\_machine\_private\_ip | n/a |
