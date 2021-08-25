@@ -40,7 +40,7 @@ module "metadata" {
   naming_rules = module.naming.yaml
 
   market              = "us"
-  project             = "https://github.com/Azure-Terraform/terraform-azurerm-virtual-network/tree/master/example/bastion"
+  project             = "https://github.com/Azure-Terraform/terraform-azurerm-virtual-machine/tree/main/examples"
   location            = "eastus2"
   environment         = "sandbox"
   product_name        = random_string.random.result
