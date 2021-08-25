@@ -29,7 +29,7 @@ Using a unique count (machine_count) to prevent duplicates
 | admin\_username | Default Username - Random if left blank | `string` | `""` | no |
 | custom\_data | The Base64-Encoded Custom Data which should be used for this Virtual Machine | `string` | `null` | no |
 | custom\_image\_id | Custom machine image ID | `string` | `null` | no |
-| identity\_ids | Specifies a list of user managed identity ids to be assigned to the VM | `list(any)` | `[]` | no |
+| identity\_ids | Specifies a list of user managed identity ids to be assigned to the VM | `list(string)` | `[]` | no |
 | identity\_type | The Managed Service Identity Type of this Virtual Machine. Possible values are SystemAssigned (where Azure will generate a Service Principal for you), UserAssigned (where you can specify the Service Principal ID's). | `string` | `"SystemAssigned"` | no |
 | kernel\_type | Virtual machine kernel - windows or linux | `string` | `"linux"` | no |
 | linux\_machine\_name | Linux Virtual Machine Name - If left blank generated from metadata module | `string` | `""` | no |
