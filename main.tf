@@ -92,7 +92,6 @@ resource "azurerm_linux_virtual_machine" "linux" {
   }
 }
 
-
 # Windows
 resource "azurerm_windows_virtual_machine" "windows" {
   count = (var.kernel_type == "windows" ? 1 : 0)
