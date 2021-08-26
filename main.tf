@@ -86,6 +86,10 @@ resource "azurerm_linux_virtual_machine" "linux" {
     write_accelerator_enabled = var.operating_system_disk_write_accelerator
   }
 
+  additional_capabilities {
+    ultra_ssd_enabled = var.ultra_ssd_enabled
+  }
+
   identity {
     type         = var.identity_type
     identity_ids = var.identity_ids
@@ -126,6 +130,10 @@ resource "azurerm_windows_virtual_machine" "windows" {
     caching                   = var.operating_system_disk_cache
     storage_account_type      = var.operating_system_disk_type
     write_accelerator_enabled = var.operating_system_disk_write_accelerator
+  }
+  
+  additional_capabilities {
+    ultra_ssd_enabled = var.ultra_ssd_enabled
   }
 
   identity {
