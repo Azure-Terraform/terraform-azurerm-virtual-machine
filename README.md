@@ -48,6 +48,7 @@ Using a unique count (machine_count) to prevent duplicates
 | source\_image\_version | Operating System Version | `string` | `"latest"` | no |
 | subnet\_id | Virtual network subnet ID | `string` | n/a | yes |
 | tags | tags to be applied to resources | `map(string)` | n/a | yes |
+| ultra\_ssd\_enabled | Should the capacity to enable Data Disks of the UltraSSD\_LRS storage account type be supported on this Virtual Machine | `bool` | `false` | no |
 | virtual\_machine\_size | Instance size to be provisioned | `string` | n/a | yes |
 | windows\_machine\_name | Windows Virtual Machine Name - Max 15 characters. If left blank randomly assigned | `string` | `""` | no |
 

@@ -114,6 +114,12 @@ variable "operating_system_disk_write_accelerator" {
   default     = false
 }
 
+variable "ultra_ssd_enabled" {
+  description = "Should the capacity to enable Data Disks of the UltraSSD_LRS storage account type be supported on this Virtual Machine"
+  type        = bool
+  default     = false
+}
+
 # Credentials
 variable "admin_username" {
   description = "Default Username - Random if left blank"
