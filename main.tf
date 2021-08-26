@@ -131,7 +131,7 @@ resource "azurerm_windows_virtual_machine" "windows" {
     storage_account_type      = var.operating_system_disk_type
     write_accelerator_enabled = var.operating_system_disk_write_accelerator
   }
-  
+
   additional_capabilities {
     ultra_ssd_enabled = var.ultra_ssd_enabled
   }
