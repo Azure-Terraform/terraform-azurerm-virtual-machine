@@ -66,6 +66,7 @@ resource "azurerm_linux_virtual_machine" "linux" {
   admin_password                  = local.admin_password
   disable_password_authentication = false
   network_interface_ids           = [azurerm_network_interface.dynamic.id]
+  proximity_placement_group_id    = azurerm_proximity_placement_group.ppg.id
 
   source_image_id = var.custom_image_id
   custom_data     = var.custom_data
@@ -107,7 +108,8 @@ resource "azurerm_windows_virtual_machine" "windows" {
   admin_username = local.admin_username
   admin_password = local.admin_password
 
-  network_interface_ids = [azurerm_network_interface.dynamic.id]
+  network_interface_ids        = [azurerm_network_interface.dynamic.id]
+  proximity_placement_group_id = azurerm_proximity_placement_group.ppg.id
 
   source_image_id = var.custom_image_id
   custom_data     = var.custom_data
@@ -133,4 +135,12 @@ resource "azurerm_windows_virtual_machine" "windows" {
     type         = var.identity_type
     identity_ids = var.identity_ids
   }
+}
+
+# PPG
+resource "azurerm_proximity_placement_group" "ppg" {
+  name                = local.virtual_machine_name
+  location            = var.names.location
+  resource_group_name = var.resource_group_name
+  tags                = var.tags
 }
