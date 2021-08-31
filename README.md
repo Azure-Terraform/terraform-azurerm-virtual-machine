@@ -39,6 +39,7 @@ Using a unique count (machine_count) to prevent duplicates
 | operating\_system\_disk\_cache | Type of caching to use on the OS disk - Options: None, ReadOnly or ReadWrite | `string` | `"ReadWrite"` | no |
 | operating\_system\_disk\_type | Type of storage account to use with the OS disk - Options: Standard\_LRS, StandardSSD\_LRS or Premium\_LRS | `string` | `"StandardSSD_LRS"` | no |
 | operating\_system\_disk\_write\_accelerator | Should Write Accelerator be Enabled for this OS Disk? | `bool` | `false` | no |
+| proximity\_placement\_group | ID of the proximity\_placement\_group you want the VM to be a member of | `string` | `null` | no |
 | public\_ip\_enabled | Create and attach a public interface? | `bool` | `false` | no |
 | public\_ip\_sku | SKU to be used with this public IP - Basic or Standard | `string` | `"Standard"` | no |
 | resource\_group\_name | Resource group name | `string` | n/a | yes |
