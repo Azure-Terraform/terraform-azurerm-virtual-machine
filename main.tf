@@ -38,10 +38,11 @@ resource "azurerm_public_ip" "primary" {
 }
 
 resource "azurerm_network_interface" "dynamic" {
-  name                = local.virtual_machine_name
-  location            = var.names.location
-  resource_group_name = var.resource_group_name
-  tags                = var.tags
+  name                          = local.virtual_machine_name
+  location                      = var.names.location
+  resource_group_name           = var.resource_group_name
+  tags                          = var.tags
+  enable_accelerated_networking = var.accelerated_networking
 
   ip_configuration {
     name                          = "internal"

@@ -158,6 +158,12 @@ variable "public_ip_sku" {
   }
 }
 
+variable "accelerated_networking" {
+  description = "Enable accelerated networking?"
+  type        = bool
+  default     = false
+}
+
 # VM Identity
 variable "identity_type" {
   description = "The Managed Service Identity Type of this Virtual Machine. Possible values are SystemAssigned (where Azure will generate a Managed Identity for you), UserAssigned (where you can specify the Managed Identities ID)."
