@@ -25,6 +25,7 @@ Using a unique count (machine_count) to prevent duplicates
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| accelerated\_networking | Enable accelerated networking? | `bool` | `false` | no |
 | admin\_password | Default Password - Random if left blank | `string` | `""` | no |
 | admin\_username | Default Username - Random if left blank | `string` | `""` | no |
 | custom\_data | The Base64-Encoded Custom Data which should be used for this Virtual Machine | `string` | `null` | no |
