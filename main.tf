@@ -61,11 +61,12 @@ resource "azurerm_linux_virtual_machine" "linux" {
   resource_group_name = var.resource_group_name
   tags                = var.tags
 
-  size                            = var.virtual_machine_size
-  admin_username                  = local.admin_username
-  admin_password                  = local.admin_password
-  disable_password_authentication = false
-  network_interface_ids           = [azurerm_network_interface.dynamic.id]
+  size                              = var.virtual_machine_size
+  admin_username                    = local.admin_username
+  admin_password                    = local.admin_password
+  disable_password_authentication   = false
+  network_interface_ids             = [azurerm_network_interface.dynamic.id]
+  azurerm_proximity_placement_group = var.azurerm_proximity_placement_group
 
   source_image_id = var.custom_image_id
   custom_data     = var.custom_data
@@ -102,12 +103,11 @@ resource "azurerm_windows_virtual_machine" "windows" {
   resource_group_name = var.resource_group_name
   tags                = merge(var.tags, { "name" : local.virtual_machine_name })
 
-
-  size           = var.virtual_machine_size
-  admin_username = local.admin_username
-  admin_password = local.admin_password
-
-  network_interface_ids = [azurerm_network_interface.dynamic.id]
+  size                              = var.virtual_machine_size
+  admin_username                    = local.admin_username
+  admin_password                    = local.admin_password
+  network_interface_ids             = [azurerm_network_interface.dynamic.id]
+  azurerm_proximity_placement_group = var.azurerm_proximity_placement_group
 
   source_image_id = var.custom_image_id
   custom_data     = var.custom_data

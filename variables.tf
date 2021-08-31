@@ -164,6 +164,12 @@ variable "accelerated_networking" {
   default     = false
 }
 
+variable "proximity_placement_group" {
+  description = "ID of the proximity_placement_group you want the VM to be a member of"
+  type        = string
+  default     = null
+}
+
 # VM Identity
 variable "identity_type" {
   description = "The Managed Service Identity Type of this Virtual Machine. Possible values are SystemAssigned (where Azure will generate a Managed Identity for you), UserAssigned (where you can specify the Managed Identities ID)."
