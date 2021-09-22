@@ -76,7 +76,6 @@ resource "azurerm_linux_virtual_machine" "linux" {
   network_interface_ids           = [azurerm_network_interface.dynamic.id]
   proximity_placement_group_id    = var.proximity_placement_group
 
-
   admin_ssh_key {
     username   = local.admin_username
     public_key = local.admin_ssh_public_key
