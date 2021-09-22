@@ -10,6 +10,8 @@ resource "random_string" "username" {
 }
 
 resource "random_password" "password" {
+  count = (var.kernel_type == "windows" && var.admin_password == "" ? 1 : 0)
+
   length           = 32
   min_lower        = 1
   min_upper        = 1
@@ -17,6 +19,13 @@ resource "random_password" "password" {
   min_special      = 1
   special          = true
   override_special = "!@#$%*()-_=+[]{}:?"
+}
+
+resource "tls_private_key" "ssh_key" {
+  count = (var.kernel_type == "linux" && var.admin_ssh_public_key == "" ? 1 : 0)
+
+  algorithm = "RSA"
+  rsa_bits  = 4096
 }
 
 resource "random_integer" "count" {
@@ -63,10 +72,15 @@ resource "azurerm_linux_virtual_machine" "linux" {
 
   size                            = var.virtual_machine_size
   admin_username                  = local.admin_username
-  admin_password                  = local.admin_password
-  disable_password_authentication = false
+  disable_password_authentication = true
   network_interface_ids           = [azurerm_network_interface.dynamic.id]
   proximity_placement_group_id    = var.proximity_placement_group
+
+
+  admin_ssh_key {
+    username   = local.admin_username
+    public_key = local.admin_ssh_public_key
+  }
 
   source_image_id = var.custom_image_id
   custom_data     = var.custom_data
