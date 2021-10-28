@@ -62,6 +62,7 @@ Using a unique count (machine_count) to prevent duplicates
 | admin\_password | n/a |
 | admin\_ssh\_key | n/a |
 | admin\_username | Credentials |
+| azurerm\_network\_interface\_id | Interface id |
 | identity\_principal\_id | Identity |
 | virtual\_machine\_id | Virtal Machine Details |
 | virtual\_machine\_name | n/a |
