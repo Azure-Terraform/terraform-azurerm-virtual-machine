@@ -122,7 +122,14 @@ variable "admin_username" {
 }
 
 variable "admin_password" {
-  description = "Default Password - Random if left blank"
+  description = "(Windows) Default Password - Random if left blank"
+  type        = string
+  default     = ""
+  sensitive   = true
+}
+
+variable "admin_ssh_public_key" {
+  description = "(Linux) Public SSH Key - Generated if left blank"
   type        = string
   default     = ""
   sensitive   = true

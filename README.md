@@ -20,13 +20,15 @@ Using a unique count (machine_count) to prevent duplicates
 |------|---------|
 | azurerm | >= 2.70.0 |
 | random | >= 3.1.0 |
+| tls | n/a |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | accelerated\_networking | Enable accelerated networking? | `bool` | `false` | no |
-| admin\_password | Default Password - Random if left blank | `string` | `""` | no |
+| admin\_password | (Windows) Default Password - Random if left blank | `string` | `""` | no |
+| admin\_ssh\_public\_key | (Linux) Public SSH Key - Generated if left blank | `string` | `""` | no |
 | admin\_username | Default Username - Random if left blank | `string` | `""` | no |
 | custom\_data | The Base64-Encoded Custom Data which should be used for this Virtual Machine | `string` | `null` | no |
 | custom\_image\_id | Custom machine image ID | `string` | `null` | no |
@@ -58,6 +60,7 @@ Using a unique count (machine_count) to prevent duplicates
 | Name | Description |
 |------|-------------|
 | admin\_password | n/a |
+| admin\_ssh\_key | n/a |
 | admin\_username | Credentials |
 | identity\_principal\_id | Identity |
 | virtual\_machine\_id | Virtal Machine Details |

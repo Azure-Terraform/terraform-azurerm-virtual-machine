@@ -21,6 +21,11 @@ output "admin_password" {
   sensitive = true
 }
 
+output "admin_ssh_key" {
+  value     = local.admin_ssh_public_key
+  sensitive = true
+}
+
 # Identity
 output "identity_principal_id" {
   value = local.principal_id

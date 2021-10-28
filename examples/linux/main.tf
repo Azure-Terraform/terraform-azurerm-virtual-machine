@@ -121,3 +121,8 @@ output "name" {
 output "vm_admin_login" {
   value = module.linux_virtual_machine.admin_username
 }
+
+output "admin_ssh_key" {
+  value     = module.linux_virtual_machine.admin_ssh_key
+  sensitive = true
+}
