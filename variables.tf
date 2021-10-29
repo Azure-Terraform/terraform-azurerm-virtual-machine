@@ -195,7 +195,7 @@ variable "identity_ids" {
   default     = []
 }
 
-variable "diagnostics_storage_account_url" {
+variable "diagnostics_storage_account_uri" {
   description = "The Storage Account's Blob Endpoint which should hold the virtual machine's diagnostic files."
   type        = string
   default     = null
