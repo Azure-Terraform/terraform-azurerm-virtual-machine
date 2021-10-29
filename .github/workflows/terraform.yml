@@ -1,34 +1,26 @@
 name: Terraform Actions
-on: [push, pull_request]
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
 jobs:
-  terraform:
+  tflint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: ${{ github.event.pull_request.head.ref }}
-
-    - name: fmt  
-      uses: docker://hashicorp/terraform:light
-      with:
-        entrypoint: terraform
-        args: fmt
-
-    - name: Render terraform docs into README
-      uses: Dirrk/terraform-docs@v1.0.8
-      with:
-        tf_docs_working_dir: .
-        tf_docs_output_file: README.md
-        tf_docs_output_method: inject
-        tf_docs_git_push: 'false'
-
-    - name: Fix Permissions
-      run: sudo chmod -R ugo+rwX .
-
-    - name: Commit files
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add *
-        git diff-index --quiet HEAD || git commit -m "Terraform GitHub Action" -a
-        git push
+      - uses: actions/checkout@v2
+  docs:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - uses: terraform-docs/gh-actions@v0.11.0
+        with:
+          working-dir: .
+          output-file: README.md
+          output-method: inject
+          git-push: "true"
