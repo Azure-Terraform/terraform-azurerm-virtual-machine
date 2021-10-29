@@ -111,11 +111,11 @@ module "linux_virtual_machine" {
   source_image_version   = "latest"
 
   # Virtual Network
-  subnet_id         = module.virtual_network.subnets["iaas-public"].id
+  subnet_id = module.virtual_network.subnets["iaas-public"].id
 
   # Identity
   identity_type = "UserAssigned"
-  identity_ids = [azurerm_user_assigned_identity.uai.id]
+  identity_ids  = [azurerm_user_assigned_identity.uai.id]
 
 }
 
