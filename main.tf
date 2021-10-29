@@ -144,7 +144,6 @@ resource "azurerm_windows_virtual_machine" "windows" {
     storage_account_uri = var.diagnostics_storage_account_uri
   }
 
-
   os_disk {
     caching                   = var.operating_system_disk_cache
     storage_account_type      = var.operating_system_disk_type
