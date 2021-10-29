@@ -1,0 +1,5 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# CodeStream ignored files
+/../../terraform-azurerm-virtual-machine\.idea/codestream.xml
