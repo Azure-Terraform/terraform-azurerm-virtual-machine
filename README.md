@@ -1,7 +1,7 @@
 # Azure - Virtual Machine Module
 
 ## Introduction
-Generic module for creating a virtual machine (Windows or Linux) in Azure. 
+Generic module for creating a virtual machine (Windows or Linux) in Azure.
 Using a unique count (machine_count) to prevent duplicates
 <br />
 
@@ -40,6 +40,7 @@ Using a unique count (machine_count) to prevent duplicates
 | machine\_count | Unique Identifier/Count - Random if left at 0 | `number` | `0` | no |
 | names | names to be applied to resources | `map(string)` | n/a | yes |
 | operating\_system\_disk\_cache | Type of caching to use on the OS disk - Options: None, ReadOnly or ReadWrite | `string` | `"ReadWrite"` | no |
+| operating\_system\_disk\_size\_gb | The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from. | `number` | `null` | no |
 | operating\_system\_disk\_type | Type of storage account to use with the OS disk - Options: Standard\_LRS, StandardSSD\_LRS or Premium\_LRS | `string` | `"StandardSSD_LRS"` | no |
 | operating\_system\_disk\_write\_accelerator | Should Write Accelerator be Enabled for this OS Disk? | `bool` | `false` | no |
 | proximity\_placement\_group | ID of the proximity\_placement\_group you want the VM to be a member of | `string` | `null` | no |

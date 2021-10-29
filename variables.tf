@@ -97,6 +97,12 @@ variable "operating_system_disk_cache" {
   }
 }
 
+variable "operating_system_disk_size_gb" {
+  description = "The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from."
+  type        = number
+  default     = null
+}
+
 variable "operating_system_disk_type" {
   description = "Type of storage account to use with the OS disk - Options: Standard_LRS, StandardSSD_LRS or Premium_LRS"
   type        = string
