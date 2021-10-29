@@ -82,6 +82,10 @@ resource "azurerm_linux_virtual_machine" "linux" {
     }
   }
 
+  boot_diagnostics {
+    storage_account_uri = var.diagnostics_storage_account_url
+  }
+
   os_disk {
     caching                   = var.operating_system_disk_cache
     storage_account_type      = var.operating_system_disk_type
@@ -122,6 +126,11 @@ resource "azurerm_windows_virtual_machine" "windows" {
       version   = var.source_image_version
     }
   }
+
+  boot_diagnostics {
+    storage_account_uri = var.diagnostics_storage_url
+  }
+
 
   os_disk {
     caching                   = var.operating_system_disk_cache
