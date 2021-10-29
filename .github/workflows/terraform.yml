@@ -5,9 +5,23 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
-  formt:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v1
+      - name: Terraform Init
+        id: init
+        run: terraform init -backend=false
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+      - run: echo ${{ steps.validate.outputs.stdout }}
+
+  format:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,6 +34,22 @@ jobs:
           git add --all 
           git commit -m 'teraform formatting'
           git push
+
+  misspell:
+    name: misspell
+    runs-on: ubuntu-latest
+    steps:
+      - uses: reviewdog/action-setup@v1
+        with:
+          reviewdog_version: latest
+      - uses: actions/checkout@v2
+      - uses: reviewdog/action-misspell@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          level: warning
+          locale: "US"
+
   docs:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
@@ -33,6 +63,7 @@ jobs:
           output-file: README.md
           output-method: inject
           git-push: "true"
+
   tflint:
     name: tflint
     runs-on: ubuntu-latest
