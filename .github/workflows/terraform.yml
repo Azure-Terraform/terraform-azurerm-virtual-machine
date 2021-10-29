@@ -7,10 +7,19 @@ on:
     branches: [main]
 
 jobs:
-  tflint:
+  formt:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: terraform fmt
+        uses: dflook/terraform-fmt@v1
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add --all 
+          git commit -m 'teraform formatting'
+          git push
   docs:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
@@ -24,3 +33,14 @@ jobs:
           output-file: README.md
           output-method: inject
           git-push: "true"
+  tflint:
+    name: tflint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: reviewdog/action-setup@v1
+        with:
+          reviewdog_version: latest
+      - uses: actions/checkout@v2
+      - uses: reviewdog/action-tflint@master
+        with:
+          github_token: ${{ secrets.github_token }}
