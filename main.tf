@@ -159,7 +159,7 @@ resource "azurerm_windows_virtual_machine" "windows" {
   additional_capabilities {
     ultra_ssd_enabled = var.ultra_ssd_enabled
   }
-  
+
   zone = var.zone
 
   identity {
