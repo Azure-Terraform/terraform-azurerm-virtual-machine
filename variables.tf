@@ -185,8 +185,8 @@ variable "ultra_ssd_enabled" {
 
 variable "zone" {
   description = "The Zone in which this Virtual Machine should be created. Changing this forces a new resource to be created."
-  type = number
-  default = null
+  type        = number
+  default     = null
 }
 
 # VM Identity
