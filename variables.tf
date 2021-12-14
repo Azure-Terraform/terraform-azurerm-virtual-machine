@@ -183,7 +183,7 @@ variable "ultra_ssd_enabled" {
   default     = false
 }
 
-variable "zone" {
+variable "availability_zone" {
   description = "The Zone in which this Virtual Machine should be created. Changing this forces a new resource to be created."
   type        = number
   default     = null
@@ -211,4 +211,10 @@ variable "diagnostics_storage_account_uri" {
   description = "The Storage Account's Blob Endpoint which should hold the virtual machine's diagnostic files."
   type        = string
   default     = null
+}
+
+variable "enable_boot_diagnostics" {
+  description = "Whether to enable boot diagnostics on the virtual machine."
+  type        = bool
+  default     = false
 }
