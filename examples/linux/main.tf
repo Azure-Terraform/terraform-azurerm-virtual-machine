@@ -109,8 +109,8 @@ module "linux_virtual_machine" {
 
   # optional
   enable_boot_diagnostics = true
-  ultra_ssd_enabled = true
-  availability_zone = 1
+  ultra_ssd_enabled       = true
+  availability_zone       = 1
 }
 
 # Outputs

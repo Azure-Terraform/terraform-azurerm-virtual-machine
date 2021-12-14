@@ -21,5 +21,5 @@ locals {
   file("ERROR: identity_ids must be provided when using User Assigned identity") : true)
 
   validate_utra_ssd = ((var.ultra_ssd_enabled == true && var.availability_zone == null) ?
-    file("ERROR: variable for availability_zone is required when ultra_ssd_enabled is true.") : true)
+  file("ERROR: variable for availability_zone is required when ultra_ssd_enabled is true.") : true)
 }
