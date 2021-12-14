@@ -95,11 +95,27 @@ resource "azurerm_linux_virtual_machine" "linux" {
     }
   }
 
+  dynamic "boot_diagnostics" {
+    for_each = var.enable_boot_diagnostics ? ["enabled"] : []
+    content {
+      storage_account_uri = var.diagnostics_storage_account_uri
+    }
+  }
+
   os_disk {
     caching                   = var.operating_system_disk_cache
     storage_account_type      = var.operating_system_disk_type
     write_accelerator_enabled = var.operating_system_disk_write_accelerator
   }
+
+  dynamic "additional_capabilities" {
+    for_each = var.ultra_ssd_enabled ? ["enabled"] : []
+    content {
+      ultra_ssd_enabled = var.ultra_ssd_enabled
+    }
+  }
+
+  zone = var.availability_zone
 
   identity {
     type         = var.identity_type
@@ -136,11 +152,27 @@ resource "azurerm_windows_virtual_machine" "windows" {
     }
   }
 
+  dynamic "boot_diagnostics" {
+    for_each = var.enable_boot_diagnostics ? ["enabled"] : []
+    content {
+      storage_account_uri = var.diagnostics_storage_account_uri
+    }
+  }
+
   os_disk {
     caching                   = var.operating_system_disk_cache
     storage_account_type      = var.operating_system_disk_type
     write_accelerator_enabled = var.operating_system_disk_write_accelerator
   }
+
+  dynamic "additional_capabilities" {
+    for_each = var.ultra_ssd_enabled ? ["enabled"] : []
+    content {
+      ultra_ssd_enabled = var.ultra_ssd_enabled
+    }
+  }
+
+  zone = var.availability_zone
 
   identity {
     type         = var.identity_type

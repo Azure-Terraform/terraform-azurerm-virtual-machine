@@ -107,6 +107,10 @@ module "linux_virtual_machine" {
   subnet_id         = module.virtual_network.subnets["iaas-public"].id
   public_ip_enabled = false
 
+  # optional
+  enable_boot_diagnostics = true
+  ultra_ssd_enabled       = true
+  availability_zone       = 1
 }
 
 # Outputs

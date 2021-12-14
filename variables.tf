@@ -177,6 +177,18 @@ variable "proximity_placement_group" {
   default     = null
 }
 
+variable "ultra_ssd_enabled" {
+  description = "Should the capacity to enable Data Disks of the UltraSSD_LRS storage account type be supported on this Virtual Machine."
+  type        = bool
+  default     = false
+}
+
+variable "availability_zone" {
+  description = "The Zone in which this Virtual Machine should be created. Changing this forces a new resource to be created."
+  type        = number
+  default     = null
+}
+
 # VM Identity
 variable "identity_type" {
   description = "The Managed Service Identity Type of this Virtual Machine. Possible values are SystemAssigned (where Azure will generate a Managed Identity for you), UserAssigned (where you can specify the Managed Identities ID)."
@@ -193,4 +205,16 @@ variable "identity_ids" {
   description = "Specifies a list of user managed identity ids to be assigned to the VM"
   type        = list(string)
   default     = []
+}
+
+variable "diagnostics_storage_account_uri" {
+  description = "The Storage Account's Blob Endpoint which should hold the virtual machine's diagnostic files."
+  type        = string
+  default     = null
+}
+
+variable "enable_boot_diagnostics" {
+  description = "Whether to enable boot diagnostics on the virtual machine."
+  type        = bool
+  default     = false
 }
