@@ -85,7 +85,7 @@ variable "source_image_version" {
   default     = "latest"
 }
 
-# Operating System Disck
+# Operating System Disk
 variable "operating_system_disk_cache" {
   description = "Type of caching to use on the OS disk - Options: None, ReadOnly or ReadWrite"
   type        = string
@@ -95,6 +95,12 @@ variable "operating_system_disk_cache" {
     condition     = (contains(["none", "readonly", "readwrite"], lower(var.operating_system_disk_cache)))
     error_message = "OS Disk cache can only be \"None\", \"ReadOnly\" or \"ReadWrite\"."
   }
+}
+
+variable "operating_system_disk_size_gb" {
+  description = "The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from."
+  type        = number
+  default     = null
 }
 
 variable "operating_system_disk_type" {

@@ -104,6 +104,7 @@ resource "azurerm_linux_virtual_machine" "linux" {
 
   os_disk {
     caching                   = var.operating_system_disk_cache
+    disk_size_gb              = var.operating_system_disk_size_gb
     storage_account_type      = var.operating_system_disk_type
     write_accelerator_enabled = var.operating_system_disk_write_accelerator
   }
@@ -161,6 +162,7 @@ resource "azurerm_windows_virtual_machine" "windows" {
 
   os_disk {
     caching                   = var.operating_system_disk_cache
+    disk_size_gb              = var.operating_system_disk_size_gb
     storage_account_type      = var.operating_system_disk_type
     write_accelerator_enabled = var.operating_system_disk_write_accelerator
   }
