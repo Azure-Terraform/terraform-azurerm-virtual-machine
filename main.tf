@@ -51,7 +51,7 @@ resource "azurerm_network_interface" "dynamic" {
   location                      = var.names.location
   resource_group_name           = var.resource_group_name
   tags                          = var.tags
-  enable_accelerated_networking = var.accelerated_networking
+  accelerated_networking_enabled = var.accelerated_networking
 
   ip_configuration {
     name                          = "internal"
