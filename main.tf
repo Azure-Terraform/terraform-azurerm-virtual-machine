@@ -51,7 +51,7 @@ resource "azurerm_network_interface" "dynamic" {
   location                      = var.names.location
   resource_group_name           = var.resource_group_name
   tags                          = var.tags
-  enable_accelerated_networking = var.accelerated_networking
+  accelerated_networking_enabled = var.accelerated_networking
 
   ip_configuration {
     name                          = "internal"
@@ -178,4 +178,27 @@ resource "azurerm_windows_virtual_machine" "windows" {
     type         = var.identity_type
     identity_ids = var.identity_ids
   }
+}
+
+
+# get the id of the OS disk for the VM
+data "azapi_resource" "os-disk" {
+  resource_id = var.kernel_type == "windows" ? azurerm_windows_virtual_machine.windows[0].id : azurerm_linux_virtual_machine.linux[0].id
+  type        = "Microsoft.Compute/virtualMachines@2021-03-01"
+
+  response_export_values = ["properties.storageProfile.osDisk.managedDisk.id"]
+}
+
+# update the network access of the OS disk of the VM
+resource "azapi_update_resource" "os-disk" {
+  resource_id = jsondecode(data.azapi_resource.os-disk.output)["properties"]["storageProfile"]["osDisk"]["managedDisk"]["id"]
+  type        = "Microsoft.Compute/disks@2022-03-02"
+  body = jsonencode(
+    {
+      properties = {
+        "networkAccessPolicy" = "DenyAll"
+        "publicNetworkAccess" = "Disabled"
+      }
+    }
+  )
 }
