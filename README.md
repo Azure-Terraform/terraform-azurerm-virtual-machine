@@ -31,7 +31,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azapi_update_resource.os-disk](https://registry.terraform.io/providers/hashicorp/azapi/latest/docs/resources/update_resource) | resource |
+| [azapi_update_resource.os-disk](https://registry.terraform.io/providers/Azure/azapi/latest/docs/resources/update_resource) | resource |
 | [azurerm_linux_virtual_machine.linux](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_virtual_machine) | resource |
 | [azurerm_network_interface.dynamic](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_interface) | resource |
 | [azurerm_public_ip.primary](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/public_ip) | resource |
@@ -41,7 +41,7 @@ No modules.
 | [random_string.username](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 | [random_string.windows_name](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 | [tls_private_key.ssh_key](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key) | resource |
-| [azapi_resource.os-disk](https://registry.terraform.io/providers/hashicorp/azapi/latest/docs/data-sources/resource) | data source |
+| [azapi_resource.os-disk](https://registry.terraform.io/providers/Azure/azapi/latest/docs/data-sources/resource) | data source |
 
 ## Inputs
 
