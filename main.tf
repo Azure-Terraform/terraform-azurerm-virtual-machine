@@ -69,6 +69,7 @@ resource "azurerm_linux_virtual_machine" "linux" {
   location            = var.names.location
   resource_group_name = var.resource_group_name
   tags                = var.tags
+  license_type        = var.license
 
   size                            = var.virtual_machine_size
   admin_username                  = local.admin_username
