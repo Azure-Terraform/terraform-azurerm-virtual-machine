@@ -218,3 +218,8 @@ variable "enable_boot_diagnostics" {
   type        = bool
   default     = false
 }
+variable "license" {
+  description = "Add license to Image for systems that use ubuntu pro support"
+  type         = string
+  default      = ""
+}
