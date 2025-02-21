@@ -218,3 +218,9 @@ variable "enable_boot_diagnostics" {
   type        = bool
   default     = false
 }
+variable "license_type" {
+  description = "Specifies that the image or disk that is being used was licensed on-premises. This element is only used for images that contain the Windows Server operating system."
+  type        = string
+  default     = null
+
+}
