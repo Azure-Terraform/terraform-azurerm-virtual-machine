@@ -221,11 +221,15 @@ variable "enable_boot_diagnostics" {
 variable "license_type" {
   description = "Specifies that the image or disk that is being used was licensed on-premises. This element is only used for images that contain the Windows Server operating system."
   type        = string
-  default     = null
+  validation {
+    condition     = var.license_type == null || contains(["Windows_Client", "Windows_Server"], var.license_type)
+    error_message = "The license type can only be \"Windows_Client\" or \"Windows_Server\"."
+  }
 
 }
 variable "host_encryption_enabled" {
   description = "Enable host level encryption"
-  type       = string
-  default    = null
+  type        = string
+  default     = null
+  nullable    = true
 }

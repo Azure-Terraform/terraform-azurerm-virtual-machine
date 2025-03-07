@@ -65,12 +65,12 @@ resource "azurerm_network_interface" "dynamic" {
 resource "azurerm_linux_virtual_machine" "linux" {
   count = (var.kernel_type == "linux" ? 1 : 0)
 
-  name                = local.virtual_machine_name
-  location            = var.names.location
-  resource_group_name = var.resource_group_name
-  tags                = var.tags
-  license_type        = var.license_type
-  encryption_at_host_enabled  = var.host_encryption_enabled
+  name                       = local.virtual_machine_name
+  location                   = var.names.location
+  resource_group_name        = var.resource_group_name
+  tags                       = var.tags
+  license_type               = var.license_type
+  encryption_at_host_enabled = var.host_encryption_enabled
 
   size                            = var.virtual_machine_size
   admin_username                  = local.admin_username
