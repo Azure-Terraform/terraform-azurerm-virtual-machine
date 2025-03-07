@@ -53,6 +53,7 @@ No modules.
 | <a name="input_custom_image_id"></a> [custom\_image\_id](#input\_custom\_image\_id) | Custom machine image ID | `string` | `null` | no |
 | <a name="input_diagnostics_storage_account_uri"></a> [diagnostics\_storage\_account\_uri](#input\_diagnostics\_storage\_account\_uri) | The Storage Account's Blob Endpoint which should hold the virtual machine's diagnostic files. | `string` | `null` | no |
 | <a name="input_enable_boot_diagnostics"></a> [enable\_boot\_diagnostics](#input\_enable\_boot\_diagnostics) | Whether to enable boot diagnostics on the virtual machine. | `bool` | `false` | no |
+| <a name="input_host_encryption_enabled"></a> [host\_encryption\_enabled](#input\_host\_encryption\_enabled) | Enable host level encryption | `string` | `null` | no |
 | <a name="input_identity_ids"></a> [identity\_ids](#input\_identity\_ids) | Specifies a list of user managed identity ids to be assigned to the VM | `list(string)` | `[]` | no |
 | <a name="input_identity_type"></a> [identity\_type](#input\_identity\_type) | The Managed Service Identity Type of this Virtual Machine. Possible values are SystemAssigned (where Azure will generate a Managed Identity for you), UserAssigned (where you can specify the Managed Identities ID). | `string` | `"SystemAssigned"` | no |
 | <a name="input_kernel_type"></a> [kernel\_type](#input\_kernel\_type) | Virtual machine kernel - windows or linux | `string` | `"linux"` | no |
