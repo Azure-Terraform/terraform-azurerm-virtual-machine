@@ -57,7 +57,7 @@ No modules.
 | <a name="input_identity_ids"></a> [identity\_ids](#input\_identity\_ids) | Specifies a list of user managed identity ids to be assigned to the VM | `list(string)` | `[]` | no |
 | <a name="input_identity_type"></a> [identity\_type](#input\_identity\_type) | The Managed Service Identity Type of this Virtual Machine. Possible values are SystemAssigned (where Azure will generate a Managed Identity for you), UserAssigned (where you can specify the Managed Identities ID). | `string` | `"SystemAssigned"` | no |
 | <a name="input_kernel_type"></a> [kernel\_type](#input\_kernel\_type) | Virtual machine kernel - windows or linux | `string` | `"linux"` | no |
-| <a name="input_license_type"></a> [license\_type](#input\_license\_type) | Specifies that the image or disk that is being used was licensed on-premises. This element is only used for images that contain the Windows Server operating system. | `string` | `null` | no |
+| <a name="input_license_type"></a> [license\_type](#input\_license\_type) | Specifies that the image or disk that is being used was licensed on-premises. This element is only used for images that contain the Windows Server operating system. | `string` | n/a | yes |
 | <a name="input_linux_machine_name"></a> [linux\_machine\_name](#input\_linux\_machine\_name) | Linux Virtual Machine Name - If left blank generated from metadata module | `string` | `""` | no |
 | <a name="input_location"></a> [location](#input\_location) | Azure region | `string` | n/a | yes |
 | <a name="input_machine_count"></a> [machine\_count](#input\_machine\_count) | Unique Identifier/Count - Random if left at 0 | `number` | `0` | no |
