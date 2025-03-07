@@ -224,3 +224,8 @@ variable "license_type" {
   default     = null
 
 }
+variable "host_encryption_enabled" {
+  description = "Enable host level encryption"
+  type       = string
+  default    = null
+}
