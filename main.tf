@@ -133,6 +133,8 @@ resource "azurerm_windows_virtual_machine" "windows" {
   location            = var.names.location
   resource_group_name = var.resource_group_name
   tags                = merge(var.tags, { "name" : local.virtual_machine_name })
+  license_type               = var.license_type
+  encryption_at_host_enabled = var.host_encryption_enabled
 
   size                         = var.virtual_machine_size
   admin_username               = local.admin_username
