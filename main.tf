@@ -129,10 +129,10 @@ resource "azurerm_linux_virtual_machine" "linux" {
 resource "azurerm_windows_virtual_machine" "windows" {
   count = (var.kernel_type == "windows" ? 1 : 0)
 
-  name                = local.virtual_machine_name
-  location            = var.names.location
-  resource_group_name = var.resource_group_name
-  tags                = merge(var.tags, { "name" : local.virtual_machine_name })
+  name                       = local.virtual_machine_name
+  location                   = var.names.location
+  resource_group_name        = var.resource_group_name
+  tags                       = merge(var.tags, { "name" : local.virtual_machine_name })
   license_type               = var.license_type
   encryption_at_host_enabled = var.host_encryption_enabled
 
