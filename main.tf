@@ -70,6 +70,7 @@ resource "azurerm_linux_virtual_machine" "linux" {
   resource_group_name = var.resource_group_name
   tags                = var.tags
   license_type        = var.license_type
+  encryption_at_host_enabled  = var.host_encryption_enabled
 
   size                            = var.virtual_machine_size
   admin_username                  = local.admin_username
