@@ -11,7 +11,7 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v1
       - name: Terraform Init
         id: init
@@ -24,7 +24,7 @@ jobs:
   format:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: terraform fmt
         uses: dflook/terraform-fmt@v1
       - name: Commit files
@@ -39,10 +39,10 @@ jobs:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-      - uses: terraform-docs/gh-actions@v0.11.0
+      - uses: terraform-docs/gh-actions@v1.3.0
         with:
           working-dir: .
           output-file: README.md
@@ -52,8 +52,8 @@ jobs:
   tflint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: terraform-linters/setup-tflint@v1
+      - uses: actions/checkout@v3
+      - uses: terraform-linters/setup-tflint@v4
         with:
           tflint_version: latest
           github_token: ${{ secrets.GITHUB_TOKEN }}

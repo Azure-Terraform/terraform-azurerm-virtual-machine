@@ -218,3 +218,14 @@ variable "enable_boot_diagnostics" {
   type        = bool
   default     = false
 }
+variable "license_type" {
+  description = "Specifies the license type for the virtual machine."
+  type        = string
+  default     = null
+}
+variable "host_encryption_enabled" {
+  description = "Enable host level encryption"
+  type        = string
+  default     = null
+  nullable    = true
+}
